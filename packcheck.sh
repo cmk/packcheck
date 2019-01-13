@@ -1137,9 +1137,12 @@ create_and_unpack_pkg_dist() {
     then
       install_cabal_deps
       cabal_configure
+      SDIST_CMD="cabal sdist $opts"
+      SDIST_DIR=dist-newstyle/sdist
+    else
+      SDIST_CMD="cabal new-sdist $opts"
+      SDIST_DIR=dist
     fi
-    SDIST_CMD="cabal sdist $opts"
-    SDIST_DIR=dist
   fi
 
   # stack commands return path in windows format
