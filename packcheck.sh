@@ -535,9 +535,9 @@ EOF
     #  CABAL_DEP_OPTIONS="$CABAL_DEP_OPTIONS --enable-benchmarks"
     #CABAL_DEP_OPTIONS="$CABAL_DEP_OPTIONS $CABAL_NEWBUILD_OPTIONS"
 
+    #  $(test -n "$DISABLE_TEST" || echo "--enable-tests")
     test -n "$CABAL_NEWBUILD_TARGETS" || CABAL_NEWBUILD_TARGETS=all
     CABAL_NEWBUILD_OPTIONS=$(cat << EOF
-      $(test -n "$DISABLE_TEST" || echo "--enable-tests")
       $(test -n "$DISABLE_BENCH" || echo "--enable-benchmarks")
       $(test -z "${COVERAGE}" || echo --enable-coverage)
       $(test -z "${GHC_OPTIONS}" || echo --ghc-options=\"$GHC_OPTIONS\")
