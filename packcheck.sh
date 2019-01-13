@@ -1068,11 +1068,12 @@ ensure_cabal_config() {
     fi
 
     echo
-    echo "cabal update"
     if test "$BUILD" = cabal 
     then
+      echo "cabal update"
       retry_cmd cabal update
     else
+      echo "cabal new-update"
       retry_cmd cabal new-update
     fi
   fi
@@ -1138,10 +1139,10 @@ create_and_unpack_pkg_dist() {
       install_cabal_deps
       cabal_configure
       SDIST_CMD="cabal sdist $opts"
-      SDIST_DIR=dist-newstyle/sdist
+      SDIST_DIR=dist
     else
       SDIST_CMD="cabal new-sdist $opts"
-      SDIST_DIR=dist
+      SDIST_DIR=dist-newstyle/sdist
     fi
   fi
 
@@ -1154,7 +1155,7 @@ create_and_unpack_pkg_dist() {
   run_verbose_errexit $SDIST_CMD
   if test ! -f $tarpath
   then
-    echo "$BUILD sdist did not create [$tarpath]"
+    echo "$SDIST_CMD did not create [$tarpath]"
     exit 1
   fi
 
