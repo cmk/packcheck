@@ -72,8 +72,10 @@ preinstall: &preinstall
         apt-get update
         # required for https/cache save and restore
         apt-get install -y ca-certificates
+        # For stack builds
         apt-get install -y build-essential
         apt-get install -y libgmp3-dev
+        apt-get install -y g++ m4 zlib1g-dev make p7zip
         # For ghc and cabal-install packages from haskell.org
         # gnupg is required for apt-key to work
         apt-get install -y gnupg
