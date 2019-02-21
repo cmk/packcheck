@@ -72,6 +72,7 @@ preinstall: &preinstall
         apt-get update
         # required for https/cache save and restore
         apt-get install -y ca-certificates
+        apt-get install -y build-essential
 
         # For ghc and cabal-install packages from haskell.org
         # gnupg is required for apt-key to work
