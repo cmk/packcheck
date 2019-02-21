@@ -73,7 +73,7 @@ preinstall: &preinstall
         # required for https/cache save and restore
         apt-get install -y ca-certificates
         apt-get install -y build-essential
-
+        apt-get install -y libgmp3-dev
         # For ghc and cabal-install packages from haskell.org
         # gnupg is required for apt-key to work
         apt-get install -y gnupg
